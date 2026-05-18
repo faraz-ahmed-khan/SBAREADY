@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GYBS_URL } from "@/lib/constants";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
 
@@ -30,15 +30,15 @@ export function FinalCTASection() {
             Ready to move forward?
           </p>
           <h2 className="mt-4 font-display text-[36px] font-semibold leading-tight text-white md:text-[44px]">
-            Check Your Business Readiness Today
+            Evaluate Your Business Readiness
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75">
-            Use our official diagnostic tool to evaluate your SBA program
-            eligibility and documentation posture.
+            Use Get Your Business Score to review documentation posture and
+            identify gaps before formal program conversations.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href={GYBS_URL} external variant="primary" size="lg">
-              Check Your Readiness →
+              {GYBS_CTA_LABEL} →
             </Button>
             <Link
               href="/resources"

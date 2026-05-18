@@ -74,7 +74,7 @@ export default function LearningPage() {
           </div>
           <div className="mt-10 text-center">
             <Link
-              href="/resources?type=modules"
+              href="/resources#modules"
               className="inline-flex text-sm font-semibold text-gold link-gold-underline"
             >
               View modules in Resources →

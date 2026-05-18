@@ -23,8 +23,11 @@ export default function PrivacyPage() {
         </p>
         <ul className="mt-6 list-disc space-y-3 pl-6 text-sm text-text-light">
           <li>We do not operate accounts or scoring logic on this domain.</li>
-          <li>Newsletter emails are processed through a future provider integration.</li>
-          <li>Contact submissions are handled via email stubs until integrated.</li>
+          <li>We do not collect information through contact or intake forms on this site.</li>
+          <li>
+            Readiness evaluation is provided externally via Get Your Business Score when you
+            choose to follow outbound links.
+          </li>
         </ul>
         <Link href="/" className="mt-10 inline-flex text-sm font-semibold text-gold link-gold-underline">
           Return home →

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NewsletterForm } from "@/components/ui/NewsletterForm";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 
 const quick = [
   { href: "/", label: "Home" },
@@ -7,22 +7,21 @@ const quick = [
   { href: "/learning", label: "Learning" },
   { href: "/resources", label: "Resources" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const resources = [
-  { href: "/resources?type=articles", label: "Articles" },
-  { href: "/resources?type=guides", label: "Guides" },
-  { href: "/resources?type=toolkits", label: "Toolkits" },
+  { href: "/resources#articles", label: "Articles" },
+  { href: "/resources#guides", label: "Guides" },
+  { href: "/resources#toolkits", label: "Toolkits" },
   { href: "/learning", label: "Learning Modules" },
-  { href: "/resources?type=checklists", label: "Checklists" },
+  { href: "/resources#checklists", label: "Checklists" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-navy-deep text-white">
       <div className="border-t border-gold/40">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
           <div>
             <p className="font-display text-xl">MISCONI NETWORK</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
@@ -110,24 +109,20 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <p className="caption-label text-gold">Contact</p>
-            <a
-              href="mailto:contact@misconinetwork.com"
-              className="mt-4 block text-sm text-white/80 link-gold-underline hover:text-white"
-            >
-              contact@misconinetwork.com
-            </a>
             <div className="mt-8">
-              <p className="caption-label text-gold">Newsletter</p>
+              <p className="caption-label text-gold">Readiness check</p>
               <p className="mt-2 text-sm text-white/70">
-                Occasional updates on new guides—no noise.
+                Use the external diagnostic to evaluate documentation posture before
+                formal program steps.
               </p>
-              <div className="mt-4">
-                <NewsletterForm />
-              </div>
+              <a
+                href={GYBS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex text-sm font-semibold text-gold link-gold-underline hover:text-white"
+              >
+                {GYBS_CTA_LABEL} →
+              </a>
             </div>
           </div>
         </div>
