@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { GYBS_URL } from "@/lib/constants";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { FadeInView } from "@/components/ui/FadeInView";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -93,7 +93,7 @@ function ProcessVertical() {
                     rel="noopener noreferrer"
                     className="mt-6 inline-flex items-center gap-2 rounded-full border border-gold bg-navy px-5 py-2.5 font-sans text-sm font-semibold text-gold transition-colors duration-300 hover:bg-gold hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
                   >
-                    Open GYBS
+                    {GYBS_CTA_LABEL}
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
                   </a>
                 </div>
@@ -153,7 +153,7 @@ function ProcessHorizontal() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 font-sans text-sm font-semibold text-gold link-gold-underline"
                 >
-                  Open GYBS
+                  {GYBS_CTA_LABEL}
                   <ArrowUpRight className="h-4 w-4 shrink-0" />
                 </a>
               </div>

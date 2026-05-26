@@ -32,7 +32,7 @@ export function ChecklistCard({
       </ul>
       <div className="mt-6">
         <Link
-          href={`/resources?type=checklists&focus=${checklist.slug}`}
+          href="/resources#checklists"
           className="inline-flex items-center gap-1 text-sm font-semibold text-gold link-gold-underline"
         >
           View Checklist <ArrowUpRight className="h-4 w-4" />

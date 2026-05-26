@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
-import { GYBS_URL } from "@/lib/constants";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -13,7 +13,6 @@ const links = [
   { href: "/learning", label: "Learning" },
   { href: "/resources", label: "Resources" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function MobileNav({
@@ -86,7 +85,7 @@ export function MobileNav({
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center rounded-full border border-gold px-6 py-3 font-sans text-sm font-semibold text-gold"
               >
-                Check Readiness →
+                {GYBS_CTA_LABEL} →
               </a>
             </div>
           </motion.div>

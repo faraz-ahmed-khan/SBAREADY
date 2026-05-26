@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { GYBS_URL } from "@/lib/constants";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
-import { SearchBar } from "@/components/ui/SearchBar";
 
 const headline =
   "Understand SBA Opportunities Through Readiness".split(" ");
@@ -92,19 +91,11 @@ export function HeroSection() {
             Explore Opportunities
           </Button>
           <Button href={GYBS_URL} external variant="outline" size="lg">
-            Check Your Readiness
+            {GYBS_CTA_LABEL}
           </Button>
           <Button href="/learning" variant="ghost" size="lg" className="text-white">
             Start Learning →
           </Button>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.65, ease }}
-          className="mx-auto mt-12 max-w-xl"
-        >
-          <SearchBar variant="hero" />
         </motion.div>
       </div>
       <motion.div

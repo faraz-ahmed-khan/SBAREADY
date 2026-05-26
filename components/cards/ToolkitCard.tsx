@@ -29,7 +29,7 @@ export function ToolkitCard({
       </p>
       <p className="mt-4 text-xs text-gray-mid">{toolkit.fileSize}</p>
       <div className="mt-6">
-        <Link href={`/resources?type=toolkits&focus=${toolkit.slug}`}>
+        <Link href="/resources#toolkits">
           <Button variant="primary" size="sm" className="w-full sm:w-auto">
             Download toolkit
           </Button>

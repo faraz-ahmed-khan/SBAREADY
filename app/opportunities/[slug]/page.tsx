@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
 import { getOpportunityBySlug, opportunities } from "@/data/opportunities";
 import { getArticleBySlug } from "@/data/articles";
-import { GYBS_URL } from "@/lib/constants";
+import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -163,7 +163,7 @@ export default function OpportunityDetailPage({ params }: Props) {
                 before formal steps.
               </p>
               <Button href={GYBS_URL} external variant="primary" size="md" className="mt-6 w-full">
-                Check Readiness →
+                {GYBS_CTA_LABEL} →
               </Button>
               <div className="mt-8 space-y-3 border-t border-warm pt-6 text-sm text-text-light">
                 <p className="font-semibold text-navy">Related on Misconi Network</p>

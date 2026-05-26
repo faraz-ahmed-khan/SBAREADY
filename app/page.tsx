@@ -3,7 +3,6 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { FeaturedResourcesSection } from "@/components/sections/FeaturedResourcesSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { HowSBAReadinessWorksSection } from "@/components/sections/HowSBAReadinessWorksSection";
-import { NewsletterSection } from "@/components/sections/NewsletterSection";
 import { OpportunityCategoriesSection } from "@/components/sections/OpportunityCategoriesSection";
 import { ReadinessTopicsSection } from "@/components/sections/ReadinessTopicsSection";
 import { WhyReadinessMattersSection } from "@/components/sections/WhyReadinessMattersSection";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <WhyReadinessMattersSection />
       <FAQSection />
       <FinalCTASection />
-      <NewsletterSection />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { articles, getArticleBySlug } from "@/data/articles";
+import { guides, getGuideBySlug } from "@/data/guides";
 import { GYBS_CTA_LABEL, GYBS_URL } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Badge } from "@/components/ui/Badge";
@@ -19,35 +19,32 @@ function injectHeadingIds(html: string) {
 }
 
 function extractToc(html: string) {
-  const items = Array.from(html.matchAll(/<h2>(.*?)<\/h2>/g)).map((m, idx) => {
+  return Array.from(html.matchAll(/<h2>(.*?)<\/h2>/g)).map((m, idx) => {
     const title = m[1].replace(/<[^>]*>/g, "");
     return { id: `section-${idx + 1}`, title };
   });
-  return items;
 }
 
 export function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
+  return guides.map((g) => ({ slug: g.slug }));
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const article = getArticleBySlug(params.slug);
-  if (!article) return {};
+  const guide = getGuideBySlug(params.slug);
+  if (!guide) return {};
   return {
-    title: article.title,
-    description: article.excerpt,
+    title: guide.title,
+    description: guide.description,
   };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const article = getArticleBySlug(params.slug);
-  if (!article) notFound();
+export default function GuidePage({ params }: Props) {
+  const guide = getGuideBySlug(params.slug);
+  if (!guide) notFound();
 
-  const html = injectHeadingIds(article.content);
-  const toc = extractToc(article.content);
-  const related = articles
-    .filter((a) => a.id !== article.id)
-    .slice(0, 3);
+  const html = injectHeadingIds(guide.content);
+  const toc = extractToc(guide.content);
+  const related = guides.filter((g) => g.id !== guide.id).slice(0, 3);
 
   return (
     <div className="bg-warm/30">
@@ -57,61 +54,31 @@ export default function ArticlePage({ params }: Props) {
             items={[
               { label: "Home", href: "/" },
               { label: "Resources", href: "/resources" },
-              { label: article.title },
+              { label: guide.title },
             ]}
           />
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.08em] text-gray-mid">
-            <Badge variant="navy">{article.category}</Badge>
-            <span>{article.readTime} min read</span>
-            <span>{article.date}</span>
+            <Badge variant="navy">Readiness guide</Badge>
+            <span>{guide.steps} steps</span>
+            <span>{guide.difficulty}</span>
           </div>
           <h1 className="mt-6 font-display text-[40px] font-bold leading-tight text-navy md:text-[48px]">
-            {article.title}
+            {guide.title}
           </h1>
-          {article.author ? (
-            <p className="mt-4 text-sm text-text-light">By {article.author}</p>
-          ) : null}
+          <p className="mt-4 text-base text-text-light">{guide.description}</p>
         </div>
       </section>
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-14 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-10">
         <FadeInView className="max-w-[720px]">
-          <article
-            className="prose-editorial rounded-3xl border border-warm bg-surface p-8 md:p-12"
-          >
+          <article className="prose-editorial rounded-3xl border border-warm bg-surface p-8 md:p-12">
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </article>
-          <div className="mt-10 flex flex-wrap items-center gap-4 rounded-2xl border border-warm bg-surface px-6 py-5">
-            <span className="font-semibold text-navy">Was this helpful?</span>
-            <button
-              type="button"
-              className="rounded-full border border-warm px-4 py-1.5 text-sm text-text-light hover:border-gold"
-            >
-              Yes
-            </button>
-            <button
-              type="button"
-              className="rounded-full border border-warm px-4 py-1.5 text-sm text-text-light hover:border-gold"
-            >
-              No
-            </button>
-            <span className="text-sm text-gray-mid">
-              Share:{" "}
-              <a
-                className="link-gold-underline text-gold"
-                href={`mailto:?subject=${encodeURIComponent(article.title)}`}
-              >
-                Email
-              </a>
-            </span>
-          </div>
           <div className="mt-8 rounded-2xl border border-warm bg-navy px-8 py-8 text-white">
             <p className="eyebrow text-gold">Next step</p>
-            <h2 className="mt-3 font-display text-2xl text-white">
-              {GYBS_CTA_LABEL}
-            </h2>
+            <h2 className="mt-3 font-display text-2xl text-white">{GYBS_CTA_LABEL}</h2>
             <p className="mt-3 text-sm text-white/75">
-              Align documentation posture before formal program conversations.
+              Evaluate documentation posture before formal program conversations.
             </p>
             <Button href={GYBS_URL} external variant="primary" className="mt-6">
               {GYBS_CTA_LABEL} →
@@ -121,7 +88,7 @@ export default function ArticlePage({ params }: Props) {
 
         <aside className="lg:sticky lg:top-32 lg:self-start">
           <div className="rounded-2xl border border-warm bg-surface p-6">
-            <p className="caption-label text-gold">On this page</p>
+            <p className="caption-label text-gold">In this guide</p>
             <ul className="mt-4 space-y-2 text-sm">
               {toc.map((t) => (
                 <li key={t.id}>
@@ -133,12 +100,12 @@ export default function ArticlePage({ params }: Props) {
             </ul>
           </div>
           <div className="mt-6 rounded-2xl border border-warm bg-surface p-6">
-            <p className="caption-label text-gold">Related resources</p>
+            <p className="caption-label text-gold">More guides</p>
             <ul className="mt-4 space-y-3 text-sm text-text-light">
               {related.map((r) => (
                 <li key={r.id}>
                   <Link
-                    href={`/resources/article/${r.slug}`}
+                    href={`/resources/guide/${r.slug}`}
                     className="link-gold-underline text-navy hover:text-gold"
                   >
                     {r.title}

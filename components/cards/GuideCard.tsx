@@ -27,7 +27,7 @@ export function GuideCard({
       </p>
       <div className="mt-6">
         <Link
-          href={`/resources?type=guides&focus=${guide.slug}`}
+          href={`/resources/guide/${guide.slug}`}
           className="inline-flex items-center gap-1 text-sm font-semibold text-gold link-gold-underline"
         >
           Open Guide <ArrowUpRight className="h-4 w-4" />
