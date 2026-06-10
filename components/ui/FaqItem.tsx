@@ -1,60 +1,38 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function FaqItem({
   question,
   answer,
-  className,
 }: {
   question: string;
   answer: string;
-  className?: string;
 }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className={cn(
-        "border-b border-warm/80 py-5 first:pt-0 last:border-b-0",
-        className,
-      )}
-    >
+    <div className="border-b border-warm py-4">
       <button
         type="button"
+        onClick={() => setOpen((o) => !o)}
         className="flex w-full items-start justify-between gap-4 text-left"
-        onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
-        <span className="font-sans text-base font-semibold text-navy">
-          {question}
-        </span>
-        <motion.span
-          animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold"
-        >
-          <Plus className="h-4 w-4" />
-        </motion.span>
+        <span className="font-medium text-navy">{question}</span>
+        <ChevronDown
+          className={cn(
+            "mt-1 h-5 w-5 shrink-0 text-gold transition-transform",
+            open && "rotate-180",
+          )}
+          aria-hidden
+        />
       </button>
-      <AnimatePresence initial={false}>
-        {open ? (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="pb-1 pt-3 text-[15px] leading-relaxed text-text-light">
-              {answer}
-            </p>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {open ? (
+        <p className="mt-3 text-sm leading-relaxed text-text-light">{answer}</p>
+      ) : null}
     </div>
   );
 }
