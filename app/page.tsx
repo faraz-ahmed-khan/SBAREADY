@@ -1,7 +1,7 @@
 import { partnerCategories } from "@/data/partnerCategories";
 import { homeFaqs } from "@/data/homeFaqs";
 import { GYBS_URL, QUIZ_CTA_LABEL } from "@/lib/constants";
-import { NeutralBanner } from "@/components/layout/NeutralBanner";
+import { SiteBanner } from "@/components/layout/SiteBanner";
 import { CategoryLinkCard } from "@/components/cards/CategoryLinkCard";
 import { FaqItem } from "@/components/ui/FaqItem";
 import { Button } from "@/components/ui/Button";
@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 export default function HomePage() {
   return (
     <>
-      <NeutralBanner />
+      <SiteBanner />
       <div className="px-6 py-12 md:py-16 lg:px-10">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-navy">SBA Partner Categories</h1>

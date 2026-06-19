@@ -1,4 +1,4 @@
-import { NeutralBanner } from "@/components/layout/NeutralBanner";
+import { SiteBanner } from "@/components/layout/SiteBanner";
 
 export function PageShell({
   title,
@@ -11,7 +11,7 @@ export function PageShell({
 }) {
   return (
     <>
-      <NeutralBanner />
+      <SiteBanner />
       <div className="px-6 py-12 md:py-16 lg:px-10">
         <div
           className={
